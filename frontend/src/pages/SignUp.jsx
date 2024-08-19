@@ -5,12 +5,14 @@ import { InputComponent } from "../components/InputComponent";
 import { SubHeadingComponent } from "../components/SubHeadingComponent";
 import { Warning } from "../components/Warning";
 import axios from 'axios'
+import { useNavigate } from "react-router-dom";
 
 export function SignUp() {
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const navigate = useNavigate()
 
 
     return <div className="flex justify-center bg-slate-300 h-screen place-items-center">
@@ -41,6 +43,8 @@ export function SignUp() {
                     password
                 });
                 localStorage.setItem("token", response.data.token)
+                navigate("/dashboard")
+                
             }}/>
             
             <div className="flex justify-center">
