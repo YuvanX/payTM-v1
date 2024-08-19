@@ -111,7 +111,8 @@ userRouter.get("/bulk", authMiddleware, async (req, res) => {
             lastName: {
                 "$regex": filter
             }
-        }]
+        }],
+        _id: { "$ne": req.userId }
     })
 
     res.json({
@@ -123,5 +124,6 @@ userRouter.get("/bulk", authMiddleware, async (req, res) => {
         }))
     })
 })
+
         
 module.exports = userRouter 
